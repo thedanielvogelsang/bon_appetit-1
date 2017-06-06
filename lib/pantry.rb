@@ -19,6 +19,8 @@ class Pantry
   def restock(food_item, quantity)
     if @stock.has_key?(food_item)
       @stock[food_item] = @stock[food_item] + quantity
+    elsif food_item.class != String
+      nil
     else
       @stock[food_item] = quantity
     end

@@ -16,4 +16,8 @@ class Pantry
     count
   end
 
+  def restock(food_item, quantity)
+    @stock[food_item] = quantity
+  end
+
 end

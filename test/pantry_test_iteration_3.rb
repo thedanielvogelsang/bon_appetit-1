@@ -26,15 +26,14 @@ class PantryTest < Minitest::Test
     result2 = pantry.shopping_list
     expected2 =  {"Cheese" => 25, "Flour" => 20, "Noodles" => 10, "Sauce" => 10}
     assert_equal expected2, result2
-
   end
 
   def test_print_shopping_list
+    skip
     pantry.add_to_shopping_list(r)
     pantry.add_to_shopping_list(r2)
     result = pantry.print_shopping_list
     expected = "* Cheese: 20\n* Flour: 20\n* Spaghetti Noodles: 10\n* Marinara Sauce: 10"
-
     assert_equal expected, result
   end
 

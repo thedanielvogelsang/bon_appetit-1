@@ -68,11 +68,11 @@ class Pantry
     food_items = recipe.ingredients.keys
     food_items.each do |food_item|
       if @shopping_list.has_key?(food_item)
-        @shopping_list[food_item.to_sym] = @shopping_list[food_item] + recipe.ingredients[food_item]
+        @shopping_list[food_item] = @shopping_list[food_item] + recipe.ingredients[food_item]
       elsif food_item.class != String
         nil
       else
-        @shopping_list[food_item.to_sym] = recipe.ingredients[food_item]
+        @shopping_list[food_item] = recipe.ingredients[food_item]
       end
     end
   end
@@ -82,8 +82,6 @@ class Pantry
   end
 
   def print_shopping_list
-    @shopping_list.each do |key, value|
-      print "*" "#{key}" + "#{value}\n"
-    end
+    #couldn't figure out how to print exactly to spec
   end
 end

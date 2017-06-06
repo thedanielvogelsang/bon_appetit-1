@@ -17,7 +17,11 @@ class Pantry
   end
 
   def restock(food_item, quantity)
-    @stock[food_item] = quantity
+    if @stock.has_key?(food_item)
+      @stock[food_item] = @stock[food_item] + quantity
+    else
+      @stock[food_item] = quantity
+    end
   end
 
 end

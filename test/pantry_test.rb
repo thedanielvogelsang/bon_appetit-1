@@ -47,14 +47,6 @@ class PantryTest < Minitest::Test
     assert_equal 2, result
   end
 
-  def test_conversion_of_units
-    result = pantry.convert_units(r)
-    expected = {"Cayenne Pepper" => {quantity: 25, units: "Milli-Units"},
-      "Cheese" => {quantity: 75, units: "Universal Units"},
-      "Flour"  => {quantity: 5, units: "Centi-Units"}}
-    assert_equal expected, result
-  end
-
   def test_milli_units
     result = pantry.milli_units(1)
     result2 = pantry.milli_units(0.5)
@@ -63,4 +55,13 @@ class PantryTest < Minitest::Test
     assert_equal 500, result2
     assert_equal 333.33, result3.round(2)
   end
+
+  def test_conversion_of_units
+    result = pantry.convert_units(r)
+    expected = {"Cayenne Pepper" => {quantity: 25, units: "Milli-Units"},
+      "Cheese" => {quantity: 75, units: "Universal Units"},
+      "Flour"  => {quantity: 5, units: "Centi-Units"}}
+    assert_equal expected, result
+  end
+
 end

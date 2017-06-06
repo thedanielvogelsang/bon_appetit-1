@@ -41,8 +41,8 @@ class Pantry
     ingredient_units = recipe_keys.map do |ingredient|
         ingredients[ingredient].to_f
       end
-    converted_units_hash = {}
     ingredient_units.each do |unit|
+      converted_units_hash = {}
       if unit > 100
         converted_units_hash[:quantity] = centi_units(unit)
         converted_units_hash[:units] = "Centi-Units"
@@ -54,8 +54,8 @@ class Pantry
         converted_units_hash[:units] = "Universal Units"
       end
       converted_units_array << converted_units_hash
-      # require 'pry' ; binding.pry
     end
+      recipe_keys.zip(converted_units_array).to_h
   end
 
 end

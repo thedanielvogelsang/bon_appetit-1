@@ -14,4 +14,9 @@ class PantryTest < Minitest::Test
     assert_instance_of Hash, result
     assert_equal expected, result
   end
+
+  def test_stock_check_prints_zero
+    result = pantry.stock_check("Cheese")
+    assert_equal 0, result
+  end
 end

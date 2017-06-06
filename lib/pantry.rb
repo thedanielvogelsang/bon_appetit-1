@@ -2,6 +2,7 @@ class Pantry
 
   def initialize
     @stock = {}
+    @shopping_list = {}
   end
 
   def stock
@@ -63,4 +64,20 @@ class Pantry
     converted_units_array
   end
 
+  def add_to_shopping_list(recipe)
+    food_items = recipe.ingredients.keys
+    food_items.each do |food_item|
+      if @shopping_list.has_key?(food_item)
+        @shopping_list[food_item] = @shopping_list[food_item] + recipe.ingredients[food_item]
+      elsif food_item.class != String
+        nil
+      else
+        @shopping_list[food_item] = recipe.ingredients[food_item]
+      end
+    end
+  end
+
+  def shopping_list
+    @shopping_list
+  end
 end

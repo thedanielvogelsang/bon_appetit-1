@@ -42,6 +42,11 @@ class PantryTest < Minitest::Test
     assert_nil result3
   end
 
+  def test_centi_unit_conversion
+    result = pantry.centi_units(200)
+    assert_equal 2, result
+  end
+
   def test_conversion_of_units
     result = pantry.convert_units(r)
     expected = {"Cayenne Pepper" => {quantity: 25, units: "Milli-Units"},

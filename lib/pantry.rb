@@ -82,6 +82,10 @@ class Pantry
   end
 
   def print_shopping_list
-    #couldn't figure out how to print exactly to spec
+    shopping_list = {}
+    @shopping_list.each_pair {|key, val| shopping_list[key.to_sym] = val.to_s+"\n"}
+    shopping_list.each do |food, quantity|
+      puts "* #{food} #{quantity}"
+    end
   end
 end

@@ -37,6 +37,11 @@ class Pantry
   def convert_units(recipe)
     ingredients = recipe.ingredients
     recipe_keys = recipe.ingredients.keys
+    converted_units_array = create_converted_units_array(ingredients, recipe_keys)
+    recipe_keys.zip(converted_units_array).to_h
+  end
+
+  def create_converted_units_array(ingredients, recipe_keys)
     converted_units_array = []
     ingredient_units = recipe_keys.map do |ingredient|
         ingredients[ingredient].to_f
@@ -55,7 +60,7 @@ class Pantry
       end
       converted_units_array << converted_units_hash
     end
-      recipe_keys.zip(converted_units_array).to_h
+    converted_units_array
   end
 
 end

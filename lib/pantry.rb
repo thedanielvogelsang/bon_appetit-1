@@ -26,4 +26,36 @@ class Pantry
     end
   end
 
+  def centi_units(quantity)
+    quantity/100
+  end
+
+  def milli_units(quantity)
+    quantity*1000
+  end
+
+  def convert_units(recipe)
+    ingredients = recipe.ingredients
+    recipe_keys = recipe.ingredients.keys
+    converted_units_array = []
+    ingredient_units = recipe_keys.map do |ingredient|
+        ingredients[ingredient].to_f
+      end
+    converted_units_hash = {}
+    ingredient_units.each do |unit|
+      if unit > 100
+        converted_units_hash[:quantity] = centi_units(unit)
+        converted_units_hash[:units] = "Centi-Units"
+      elsif unit < 1
+        converted_units_hash[:quantity] = milli_units(unit)
+        converted_units_hash[:units] = "Milli-Units"
+      else
+        converted_units_hash[:quantity] = unit
+        converted_units_hash[:units] = "Universal Units"
+      end
+      converted_units_array << converted_units_hash
+      # require 'pry' ; binding.pry
+    end
+  end
+
 end
